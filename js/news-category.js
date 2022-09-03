@@ -50,13 +50,22 @@ const loadCardCategory = async (categoryId) => {
         </div>
       </div>
       <small class="text-muted"><i class="bi bi-eye"></i> ${news.total_view ? news.total_view : 0}</small>
-      <button class="btn btn-primary btn-sm">Details</button>
+      <button onclick="loadNewsDetails('${news._id}')" href="#" class="btn btn-primary btn-sm">Details</button>
     </div>
     </div>
     `
     cardsContainer.appendChild(newCardDiv);
   }
 }
+
+const loadNewsDetails = async news_id => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data.data)
+}
+
+
 
 loadNewsCategory()
 
