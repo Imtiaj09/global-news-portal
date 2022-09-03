@@ -40,7 +40,7 @@ const loadCardCategory = async (categoryId) => {
         <div>
           <img
             class="author-profile rounded-circle"
-            src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg"
+            src="${news.author.img}"
             alt=""
           />
         </div>
