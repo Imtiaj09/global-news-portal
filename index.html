@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Global News</title>
+    <!-- Bootstrap CDN Link -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,7 +13,30 @@
     />
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <!-- header start -->
+    <header class="container">
+      <nav class="navbar navbar-expand-lg bg-light mt-4">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><span class="badge text-bg-primary p-2">GLOBAL</span> News</a
+          >
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="hr-bar">
+        <div class="bg-light border"></div>
+      </div>
+    </header>
+    <!-- header end -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
