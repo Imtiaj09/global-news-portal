@@ -32,7 +32,7 @@ const loadCardCategory = async (categoryId) => {
     <div class="card-body">
       <h5 class="card-title">${news.title}</h5>
       <p class="card-text">
-        ${news.details.slice(0, 250)}...see more
+        ${news.details.slice(0, 250)}...<span class="text-primary">See more</span>
       </p>
     </div>
     <div class="card-footer">
@@ -49,8 +49,8 @@ const loadCardCategory = async (categoryId) => {
           <h6>${news.author.published_date ? news.author.published_date.slice(0, 10) : 'N/A'}</h6>
         </div>
       </div>
-      <small class="text-muted"><i class="bi bi-eye"></i>${news.total_view ? news.total_view : 0}</small>
-      <button>serch</button>
+      <small class="text-muted"><i class="bi bi-eye"></i> ${news.total_view ? news.total_view : 0}</small>
+      <button class="btn btn-primary btn-sm">Details</button>
     </div>
     </div>
     `
