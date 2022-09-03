@@ -50,7 +50,8 @@ const loadCardCategory = async (categoryId) => {
         </div>
       </div>
       <small class="text-muted"><i class="bi bi-eye"></i> ${news.total_view ? news.total_view : 0}</small>
-      <button onclick="loadNewsDetails('${news._id}')" href="#" class="btn btn-primary btn-sm">Details</button>
+      <button onclick="loadNewsDetails('${news._id}')" href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+      data-bs-target="#newsDetailModal">Details</button>
     </div>
     </div>
     `
@@ -62,10 +63,23 @@ const loadNewsDetails = async news_id => {
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.data)
+  displayNewsDetails(data.data)
 }
 
-
+const displayNewsDetails = news => {
+  console.log(news)
+  const modalTitale = document.getElementById('newsDetailModalLabel');
+  modalTitale.innerHTML = `
+  <img src="${news[0].image_url}" class="card-img-top" alt="..." />
+  <p><span class="fw-bolder">News-Title:</span> ${news[0].title}</p>
+  `
+  const newsDetails = document.getElementById('news-details');
+  newsDetails.innerHTML = `
+  <h6> <span class="fw-bolder">Auther:</span> ${news[0].author.name}</h6>
+  <p> <span class="fw-semibold">Rating:</span> ${news[0].rating.number}</P>
+  <p> <span class="fw-semibold">Publish-date:</span> ${news[0].author.published_date}</P>
+  `
+}
 
 loadNewsCategory()
 
