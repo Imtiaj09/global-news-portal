@@ -2,7 +2,7 @@ const loadNewsCategory = async () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`
   const res = await fetch(url)
   const data = await res.json()
-  const categorys = data.data.news_category;
+  const categorys = data.data.news_category
   const menuEategory = document.getElementById('menu-category');
   for (const category of categorys) {
     const newLi = document.createElement('li')
@@ -10,9 +10,9 @@ const loadNewsCategory = async () => {
     <a onclick="loadCardCategory('${category.category_id}')"class="nav-link text-dark" aria-current="page" href="#">${category.category_name}</a>
     `
     menuEategory.appendChild(newLi);
-
   }
-
+  //start spinner 
+  console.log(toggleSpinner(true))
 }
 
 const loadCardCategory = async (categoryId) => {
@@ -21,6 +21,7 @@ const loadCardCategory = async (categoryId) => {
   const data = await res.json()
   const allNews = data.data
   const cardsContainer = document.getElementById('cards-container');
+
   cardsContainer.innerHTML = '';
   for (const news of allNews) {
     const newCardDiv = document.createElement('div');
@@ -56,7 +57,10 @@ const loadCardCategory = async (categoryId) => {
     </div>
     `
     cardsContainer.appendChild(newCardDiv);
-  }
+  };
+  //stop spinner 
+  console.log(toggleSpinner(false))
+
 }
 
 const loadNewsDetails = async news_id => {
@@ -64,6 +68,16 @@ const loadNewsDetails = async news_id => {
   const res = await fetch(url);
   const data = await res.json();
   displayNewsDetails(data.data)
+}
+
+const toggleSpinner = isLoading => {
+  const spinnerSection = document.getElementById('spinner')
+  if (isLoading) {
+    spinnerSection.classList.remove('d-none')
+  }
+  else {
+    spinnerSection.classList.add('d-none')
+  }
 }
 
 const displayNewsDetails = news => {
